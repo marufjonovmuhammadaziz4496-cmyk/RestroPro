@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07111f">
+    <title>RestroPro — Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header class="admin-header">
+        
+        <div class="admin-brand">
+        <div class="brand-icon" style="background-color: #07111f; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; width: 50px; height: 50px;">
+    <img src="photo_2026-08-10_08-51-08.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+</div>
+            <div>
+                
+              <h1>RestroPro</h1>
+                <p>
+                    Admin panel
+                </p>
+            </div>
+        </div>
+      <div class="admin-actions">
+            <button id="themeBtn" class="theme-btn" onclick="toggleTheme()">
+                🌙
+            </button>
+            <a href="index.html" class="back-btn">
+                ← Asosiy
+            </a>
+        </div>
+    </header>
+    <main class="admin-container">
+        <section class="admin-welcome">
+            <div>
+                <span class="eyebrow">
+                    BOSHQARUV MARKAZI
+                </span>
+                <h2>
+                    Xush kelibsiz 👋
+                </h2>
+                <p>
+                    Restoraningizdagi stollar va
+                    buyurtmalarni shu yerdan boshqaring.
+                </p>
+            </div>
+            <div class="admin-date">
+                <span>
+                    Bugun
+                </span>
+
+                <strong id="adminDate">
+                    —
+                </strong>
+            </div>
+        </section>
+        <section class="admin-stats">
+            <div class="admin-stat">
+                <div class="stat-icon green">
+                    ✓
+                </div>
+                <div>
+                    <span>
+                        Bo‘sh stollar
+                    </span>
+                    <strong id="freeCount">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+
+            <div class="admin-stat">
+
+                <div class="stat-icon red">
+                    ●
+                </div>
+
+                <div>
+
+                    <span>
+                        Band stollar
+                    </span>
+
+                    <strong id="busyCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="admin-stat">
+
+                <div class="stat-icon blue">
+                    ₿
+                </div>
+
+                <div>
+
+                    <span>
+                        Bugungi tushum
+                    </span>
+
+                    <strong id="todayTotal">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="admin-stat">
+
+                <div class="stat-icon purple">
+                    #
+                </div>
+
+                <div>
+
+                    <span>
+                        Jami stollar
+                    </span>
+
+                    <strong id="totalTables">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= TABLE MANAGEMENT ================= -->
+
+        <section class="admin-section">
+
+
+            <div class="section-top">
+
+                <div>
+
+                    <span class="eyebrow">
+                        RESTORAN
+                    </span>
+
+                    <h2>
+                        Stol boshqaruvi
+                    </h2>
+                    <p>
+                        Barcha stollar holatini kuzating.
+                    </p>
+
+                </div>
+
+
+                <div class="section-actions">
+
+                    <button class="add-table-btn" onclick="addTable()">
+                        + Stol qo‘shish
+                    </button>
+
+                    <button class="remove-table-btn" onclick="removeTable()">
+                        − Stol o‘chirish
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TABLE FILTER -->
+
+            <div class="table-filter">
+
+                <button class="filter active" onclick="filterTables('all', this)">
+                    Barchasi
+                </button>
+
+                <button class="filter" onclick="filterTables('free', this)">
+                    🟢 Bo‘sh
+                </button>
+
+                <button class="filter" onclick="filterTables('busy', this)">
+                    🔴 Band
+                </button>
+
+            </div>
+
+
+
+            <!-- TABLES -->
+
+            <div id="adminTablesGrid" class="admin-tables-grid">
+
+                <!-- JS stollarni chiqaradi -->
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= ACTIVE ORDERS ================= -->
+
+        <section class="admin-section">
+
+
+            <div class="section-top">
+
+                <div>
+
+                    <span class="eyebrow">
+                        BUYURTMALAR
+                    </span>
+
+                    <h2>
+                        Faol buyurtmalar
+                    </h2>
+
+                    <p>
+                        Hozirgi band stollarning buyurtmalari.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="activeOrders" class="active-orders">
+
+                <!-- JS -->
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= QUICK INFO ================= -->
+
+        <section class="admin-section quick-section">
+
+            <div class="quick-card">
+
+                <div class="quick-icon">
+                    💡
+                </div>
+
+                <div>
+
+                    <h3>
+                        Ishlash tartibi
+                    </h3>
+
+                    <p>
+                        Ofitsiant asosiy paneldan stolga
+                        buyurtma qo‘shadi. Stol avtomatik
+                        ravishda <b>BAND</b> holatga o'tadi.
+                        Mijoz ketganda esa stolni bo‘shatish
+                        mumkin.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= ADMIN TABLE MODAL ================= -->
+
+    <div id="adminTableModal" class="admin-modal hidden">
+
+        <div class="admin-modal-overlay" onclick="closeAdminTable()"></div>
+
+
+        <div class="admin-modal-box">
+
+
+            <button class="admin-close" onclick="closeAdminTable()">
+                ×
+            </button>
+
+
+            <span id="adminModalStatus" class="status-badge">
+                BO‘SH
+            </span>
+
+
+            <h2 id="adminModalTitle">
+                Stol #1
+            </h2>
+
+
+            <!-- CUSTOMER -->
+
+            <div class="customer-control">
+
+                <div>
+
+                    <span>
+                        Mijozlar
+                    </span>
+
+                    <small>
+                        Stol atrofidagi mijozlar
+                    </small>
+
+                </div>
+
+
+                <div class="customer-buttons"><button onclick="changeCustomers(-1)">
+                        −
+                    </button>
+
+                    <strong id="adminCustomerCount">
+                        0
+                    </strong>
+
+                    <button onclick="changeCustomers(1)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ROOM -->
+
+            <div class="admin-info-row">
+
+                <span>
+                    Xona
+                </span>
+
+                <strong id="adminRoom">
+                    Asosiy zal
+                </strong>
+
+            </div>
+
+
+
+            <!-- ORDERS -->
+
+            <div class="admin-orders">
+
+                <div class="admin-orders-title">
+
+                    <h3>
+                        🍽️ Buyurtmalar
+                    </h3>
+
+                    <button onclick="openAdminOrder()" class="admin-add-order">
+                        + Buyurtma
+                    </button>
+
+                </div>
+
+
+                <div id="adminOrdersList" class="admin-orders-list">
+
+                    Hozircha buyurtma yo‘q 🍽️
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TOTAL -->
+
+            <div class="admin-total">
+
+                <div>
+
+                    <span>
+                        Jami hisob
+                    </span>
+
+                    <small>
+                        Stol bo‘yicha
+                    </small>
+
+                </div>
+
+                <strong id="adminTotal">
+                    0 so‘m
+                </strong>
+
+            </div>
+
+
+
+            <!-- CLEAR -->
+
+            <button class="clear-table-btn" onclick="clearAdminTable()">
+                ✓ Stolni bo‘shatish
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= ORDER MODAL ================= -->
+
+    <div id="adminOrderModal" class="admin-modal hidden">
+
+        <div class="admin-modal-overlay" onclick="closeAdminOrder()"></div>
+
+
+        <div class="admin-modal-box small">
+
+
+            <button class="admin-close" onclick="closeAdminOrder()">
+                ×
+            </button>
+
+
+            <span class="eyebrow">
+                YANGI BUYURTMA
+            </span>
+
+
+            <h2>
+                Taom qo‘shish
+            </h2>
+
+
+            <form onsubmit="addAdminOrder(event)">
+
+
+                <label>
+                    Taom nomi
+                </label>
+
+                <input id="adminFoodName" type="text" placeholder="Masalan: Osh" required>
+
+
+                <label>
+                    Miqdor
+                </label>
+
+                <input id="adminFoodQty" type="number" value="1" min="1" required>
+
+
+                <label>
+                    Narxi
+                </label>
+
+                <input id="adminFoodPrice" type="number" placeholder="35000" min="0" required>
+
+
+                <button type="submit" class="submit-btn">
+                    Buyurtmaga qo‘shish
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div id="adminToast" class="admin-toast">
+        Saqlandi ✓
+    </div>
+
+
+
+    <!-- ================= JS ================= -->
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>

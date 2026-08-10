@@ -1,0 +1,108 @@
+{
+    "tables": [
+        {
+            "id": 1,
+            "status": "free",
+            "room": "Asosiy zal",
+            "customers": 0,
+            "orders": [],
+            "total": 0
+        },
+        {
+            "id": 2,
+            "status": "free",
+            "room": "Asosiy zal",
+            "customers": 0,
+            "orders": [],
+            "total": 0
+        },
+        {
+            "id": 3,
+            "status": "free",
+            "room": "Asosiy zal",
+            "customers": 0,
+            "orders": [],
+            "total": 0
+        },
+        {
+            "id": 4,
+            "status": "free",
+            "room": "Asosiy zal",
+            "customers": 0,
+            "orders": [],
+            "total": 0
+        },
+        {
+            "id": 5,
+            "status": "free",
+            "room": "Asosiy zal",
+            "customers": 0,
+            "orders": [],
+            "total": 0
+        },
+        {
+            "id": 6,
+            "status": "free",
+            "room": "Asosiy zal",
+            "customers": 0,
+            "orders": [],
+            "total": 0
+        },
+        {
+            "id": 7,
+            "status": "free",
+            "room": "Asosiy zal",
+            "customers": 0,
+            "orders": [],
+            "total": 0
+        },
+        {
+            "id": 8,
+            "status": "free",
+            "room": "Asosiy zal",
+            "customers": 0,
+            "orders": [],
+            "total": 0
+        },
+        {
+            "id": 9,
+            "status": "free",
+            "room": "Asosiy zal",
+            "customers": 0,
+            "orders": [],
+            "total": 0
+        },
+        {
+            "id": 10,
+            "status": "free",
+            "room": "Asosiy zal",
+            "customers": 0,
+            "orders": [],
+            "total": 0
+        },
+        {
+            "id": 11,
+            "status": "free",
+            "room": "Asosiy zal",
+            "customers": 0,
+            "orders": [],
+            "total": 0
+        },
+        {
+            "id": 12,
+            "status": "free",
+            "room": "Asosiy zal",
+            "customers": 0,
+            "orders": [],
+            "total": 0
+        }
+    ],
+    "dailyIncome": {
+        "date": "2026-08-10",
+        "amount": 0
+    },
+    "admin": {
+        "username": "admin",
+        "password": "1234"
+    }
+}

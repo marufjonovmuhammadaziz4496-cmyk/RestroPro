@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#07111f">
+
+    <title>RestroPro — Restaurant Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="brand">
+
+<div class="brand-icon" style="background-color: #07111f; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; width: 50px; height: 50px;">
+    <img src="photo_2026-08-10_08-51-08.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+</div>
+
+
+            <div class="brand-text">
+
+                <h1>RestroPro</h1>
+
+                <p>
+                    Restaurant management
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <button id="themeBtn" class="theme-btn" onclick="toggleTheme()" aria-label="Rejim">
+                🌙
+            </button>
+
+
+
+            <a href="login.html"> <button type="button" class="admin-btn" onclick="goToAdmin()">
+                    <span>⚙</span>
+                    Admin
+                </button>
+
+            </a>
+
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div>
+
+                <span class="hero-label">
+                    TODAY'S OVERVIEW
+                </span>
+
+                <h2>
+                    Restoraningizni
+                    <span>boshqaring.</span>
+                </h2>
+
+                <p>
+                    Stollar, buyurtmalar va hisoblarni
+                    bitta joydan nazorat qiling.
+                </p>
+
+            </div>
+
+
+            <div class="hero-decoration">
+
+                <div class="hero-circle"></div>
+
+                <div class="hero-grid"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="stats">
+
+
+            <div class="stat-card free-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-icon">
+                        ✓
+                    </span>
+
+                    <span class="stat-live">
+                        LIVE
+                    </span>
+
+                </div>
+
+                <strong id="freeCount">
+                    0
+                </strong>
+
+                <span>
+                    Bo‘sh stol
+                </span>
+
+            </div>
+
+
+            <div class="stat-card busy-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-icon">
+                        ●
+                    </span>
+
+                    <span class="stat-live">
+                        LIVE
+                    </span>
+
+                </div>
+
+                <strong id="busyCount">
+                    0
+                </strong>
+
+                <span>
+                    Band stol
+                </span>
+
+            </div>
+
+
+            <div class="stat-card money-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-icon">
+                        ₸
+                    </span>
+
+                    <span class="stat-live">
+                        TODAY
+                    </span>
+
+                </div>
+
+                <strong id="todayTotal">
+                    0
+                </strong>
+
+                <span>
+                    Bugungi tushum
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= TABLE HEADER ================= -->
+
+        <section class="tables-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        RESTAURANT
+                    </span>
+
+                    <h2>
+                        Stollar
+                    </h2>
+                    <p>
+                        Stol holatini real vaqt rejimida
+                        kuzating.
+                    </p>
+
+                </div>
+
+
+                <div class="table-actions">
+
+                    <span id="currentTime" class="current-time">
+                        00:00
+                    </span>
+
+
+                    <button class="add-table-btn" onclick="addTable()">
+                        <span>+</span>
+                        Stol
+                    </button>
+
+
+                    <button class="remove-table-btn" onclick="removeTable()">
+                        −
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FILTER -->
+
+            <div class="table-toolbar">
+
+                <div class="table-status-info">
+
+                    <span class="dot green-dot"></span>
+                    Bo‘sh
+
+                    <span class="dot red-dot"></span>
+                    Band
+
+                </div>
+
+
+                <div class="table-count">
+
+                    <span id="tableCount">
+                        0
+                    </span>
+
+                    ta stol
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= TABLES ================= -->
+
+        <section id="tablesGrid" class="tables-grid">
+
+            <!-- JS -->
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= TABLE MODAL ================= -->
+
+    <div id="tableModal" class="modal hidden">
+
+        <div class="modal-overlay" onclick="closeTable()"></div>
+
+
+        <div class="modal-box">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span id="modalStatus" class="status-badge">
+                        BO‘SH
+                    </span>
+
+                    <h2 id="modalTitle">
+                        Stol #1
+                    </h2>
+
+                </div>
+
+
+                <button class="close-btn" onclick="closeTable()">
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- INFO -->
+
+            <div class="table-info">
+
+                <div>
+
+                    <span>
+                        Xona
+                    </span>
+
+                    <strong id="roomNumber">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Mijozlar
+                    </span>
+
+                    <strong id="customerCount">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ORDERS -->
+
+            <div class="orders-section">
+
+                <div class="orders-title">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            ORDER
+                        </span>
+
+                        <h3>
+                            Buyurtmalar
+                        </h3>
+
+                    </div>
+
+
+                    <button onclick="openOrderForm()" class="add-order-btn">
+                        + Buyurtma
+                    </button>
+
+                </div>
+
+
+                <div id="ordersList" class="orders-list">
+
+                    <!-- JS -->
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TOTAL -->
+
+            <div class="total-box">
+
+                <div>
+
+                    <span>
+                        Jami hisob
+                    </span>
+                    <small>
+                        Barcha buyurtmalar
+                    </small>
+
+                </div>
+
+
+                <strong id="totalPrice">
+                    0 so‘m
+                </strong>
+
+            </div>
+
+
+
+            <button id="clearTableBtn" class="clear-table-btn" onclick="clearTable()">
+                ✓ Stolni bo‘shatish
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= ORDER MODAL ================= -->
+
+    <div id="orderModal" class="modal hidden">
+
+        <div class="modal-overlay" onclick="closeOrderForm()"></div>
+
+
+        <div class="modal-box small">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        NEW ORDER
+                    </span>
+
+                    <h2>
+                        Taom qo‘shish
+                    </h2>
+
+                </div>
+
+
+                <button class="close-btn" onclick="closeOrderForm()">
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <form id="orderForm" onsubmit="addOrder(event)">
+
+                <label>
+                    Taom nomi
+                </label>
+
+                <input type="text" id="foodName" placeholder="Masalan: Osh" required>
+
+
+                <label>
+                    Miqdor
+                </label>
+
+                <input type="number" id="foodQty" value="1" min="1" required>
+
+
+                <label>
+                    Narxi
+                </label>
+
+                <input type="number" id="foodPrice" placeholder="35000" min="0" required>
+
+
+                <button type="submit" class="submit-btn">
+                    Buyurtmaga qo‘shish →
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div id="toast" class="toast">
+        Saqlandi
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
